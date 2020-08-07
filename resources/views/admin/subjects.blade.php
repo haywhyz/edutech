@@ -24,6 +24,7 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Teacher In Charge</th>
                     <th>Date Added</th>
                   </tr>
                 </thead>
@@ -34,7 +35,8 @@
                   <tr>
                   <td>{{$no++}}</td>
                     <td>{{$subject->name}}</td>
-                    <td>{{$subject->created_at->format('l jS \\of F Y')}}</td>
+                    <td>{{$subject->teacher}}</td>
+                    <td>{{$subject->created_at}}</td>
                   </tr>
                   @endforeach
                 </tbody>
