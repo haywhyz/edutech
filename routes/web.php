@@ -24,7 +24,8 @@ Route::prefix('admin')->group(function(){
 	Route::get('/home', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/payments', 'AdminController@payments')->name('admin.payments');
 	Route::get('/resources', 'AdminController@resources')->name('admin.resources');
-	Route::get('/subjects', 'AdminController@subjects')->name('admin.subjects');
+	// Route::get('/subjects', 'AdminController@subjects')->name('admin.subjects');
+	Route::resource('/subjects', 'SubjectController');
 	Route::get('/topics', 'AdminController@topics')->name('admin.topics');
 
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
