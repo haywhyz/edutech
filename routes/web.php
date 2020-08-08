@@ -21,11 +21,13 @@ Route::get('/teacher', 'TeacherController@dashboard')->name('teacher')->middlewa
 Route::prefix('admin')->group(function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-	Route::get('/home', 'AdminController@index')->name('admin.dashboard');
+	Route::resource('/home', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/payments', 'AdminController@payments')->name('admin.payments');
 	Route::get('/resources', 'AdminController@resources')->name('admin.resources');
 	// Route::get('/subjects', 'AdminController@subjects')->name('admin.subjects');
 	Route::resource('/subjects', 'SubjectController');
+	Route::resource('/curriculum', 'CurriculumController');
+	Route::resource('resources', 'ResourcesController');
 	Route::get('/topics', 'AdminController@topics')->name('admin.topics');
 
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');

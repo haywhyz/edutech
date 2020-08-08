@@ -26,8 +26,8 @@
               <ul class="nav child_menu">
               <li><a href="{{ route('admin.payments')}}">Payments</a></li>
                 <li><a href="{{ route('subjects.index')}}">Subjects</a></li>
-                <li><a href="{{ route('admin.topics')}}">Topics</a></li>
-                <li><a href="{{ route('admin.resources')}}">Resources</a></li>
+                <li><a href="{{ route('curriculum.index')}}">Curriculum</a></li>
+                <li><a href="{{ route('resources.index')}}">Resources</a></li>
 
               </ul>
             </li>

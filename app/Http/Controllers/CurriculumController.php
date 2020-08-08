@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Curriculum;
 use App\Subject;
+use App\Resource;
 
-class SubjectController extends Controller
+class CurriculumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('admin.subjects.index')->with('subjects', Subject::get());
+        $curriculums = Curriculum::all();
+        // dd($curriculums);
+        return view('admin.curriculum.index')->with('curriculums', $curriculums)->with('subjects', Subject::all())->with('resources', Resource::all());
     }
 
     /**
@@ -35,12 +39,14 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        $subjects = $request->all();
-        // dd($subjects);
-        $subjects= Subject::create(array(
-            'name' => $request->subject,
+        $curriculums = $request->all();
+   
+        $curriculums= Curriculum::create(array(
+            'name' => $request->name,
+            'resources_id'=>$request->resources_id,
+            'subject_id'=>$request->subject_id,
         ));
-        return view('admin.subjects.index');
+        return view('admin.curriculum.index');
     }
 
     /**
@@ -61,8 +67,9 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   $subjects = Subject::find($id);
-        return view('admin.subjects.edit')->with('subjects', $subjects);
+    {
+        $curriculums = Curriculum::find($id);
+        return view('admin.curriculum.edit')->with('curriculums', $curriculums);
     }
 
     /**
@@ -72,12 +79,9 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Subject $subject)
+    public function update(Request $request, $id)
     {
-        $data = request()->all();
-        $subject->name = $data['subject'];
-        $subject->update();
-        return redirect()->route('subjects.index');
+        //
     }
 
     /**
@@ -86,9 +90,8 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy($id)
     {
-        $subject->delete();
-        return redirect()->route('subjects.index');
+        //
     }
 }

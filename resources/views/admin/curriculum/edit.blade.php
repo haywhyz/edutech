@@ -13,18 +13,18 @@
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Subjects List</h2>
+              <h2>Edit  Curriculum</h2>
               <div class="clearfix"></div>
             </div>
        
             
         <div class="col-md-6">
-            <form  action="{{route('subjects.update',$subjects->id )}}" method="post">
+            <form  action="{{route('curriculum.update',$curriculums->id )}}" method="post">
             @csrf()
             @method('PUT')
                 <div class="form-group">
                      <label> Subject Name </label>
-                     <input type="text" name="subject" class="form-control" value="{{$subjects->name}}">
+                     <input type="text" name="subject" class="form-control" value="{{$curriculums->name}}">
                 </div>
 
                 <div class "form-group">

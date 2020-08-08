@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Resource;
+use App\Curriculum;
 use App\Subject;
 
-class SubjectController extends Controller
+class ResourcesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +15,9 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.subjects.index')->with('subjects', Subject::get());
+    {   $resources = Resource::all();
+        // dd($resources);
+        return view('admin.resources.index')->with('resources', $resources)->with('curriculums', Curriculum::all())->with('subjects', Subject::all());
     }
 
     /**
@@ -35,12 +38,19 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        $subjects = $request->all();
-        // dd($subjects);
-        $subjects= Subject::create(array(
-            'name' => $request->subject,
+
+        $resources = $request->all();
+        // dd($resources);
+        $file = $request->file->store('resources');
+        $subjects= Resource::create(array(
+            'name' => $request->name,
+            'subject_id'=>$request->subject_id,
+            'curriculum_id'=>$request->curriculum_id,
+                'class' => $request->class,
+            'file'=>$file
+
         ));
-        return view('admin.subjects.index');
+        return view('admin.resources.index');
     }
 
     /**
@@ -61,8 +71,9 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   $subjects = Subject::find($id);
-        return view('admin.subjects.edit')->with('subjects', $subjects);
+    {
+        $resources = Resource::find($id);
+        return view('admin.resources.edit')->with('resources', $resources)->with('curriculums', Curriculum::all())->with('subjects', Subject::all());
     }
 
     /**
@@ -72,12 +83,16 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Subject $subject)
+    public function update(Request $request, Resource $resource)
     {
         $data = request()->all();
-        $subject->name = $data['subject'];
+        $resource->name = $data['name'];
+        $resource->subject_id = $data['subject_id'];
+        $resource->curriculum_id = $data['curriculum_id'];
+        $resource->class = $data['class'];
+        // $resource->file = $data['file'];
         $subject->update();
-        return redirect()->route('subjects.index');
+        return redirect()->route('resources.index');
     }
 
     /**
@@ -86,9 +101,9 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy(Resource $resource)
     {
-        $subject->delete();
-        return redirect()->route('subjects.index');
+        $resource->delete();
+        return redirect()->route('resources.index');
     }
 }
