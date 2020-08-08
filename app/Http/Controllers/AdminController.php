@@ -32,6 +32,7 @@ class AdminController extends Controller
     {
         $admin = Admin::where('id', Auth::user()->id)->first();
         return view('admin.index')->with('name', $admin->name);
+        // return view('admin.index');
     }
 
       public function payments()

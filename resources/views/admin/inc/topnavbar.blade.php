@@ -9,13 +9,13 @@
         <ul class="nav navbar-nav navbar-right">
          
           <li class="">
-            <a href="{{ route('user.logout') }}" class="user-profile dropdown-toggle" aria-expanded="false">
+            <a href="" class="user-profile dropdown-toggle" aria-expanded="false">
               Logout
             </a>
           </li>
           <li class="">
             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <img src="" alt="">{{Auth()->user()->name }}
+              {{-- <img src="" alt="">{{Auth()->user()->name }} --}}
             </a>
           </li>
         </ul>

@@ -10,7 +10,7 @@
       <div class="profile clearfix">
         <div class="profile_info ml-4" style="text-align: center">
           <span>Welcome</span>
-          <h2>{{ ucfirst(Auth()->user()->name) }}</h2>
+          {{-- <h2>{{ ucfirst(Auth()->user()->name) }}</h2> --}}
         </div>
       </div>
       <!-- /menu profile quick info -->
@@ -25,9 +25,9 @@
             <li><a><i class="fa fa-home"></i> Menu <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
               <li><a href="{{ route('admin.payments')}}">Payments</a></li>
-                <li><a href="{{ route('admin.subjects')}}">Subjects</a></li>
-                <li><a href="{{ route('admin.topics')}}">Topics</a></li>
-                <li><a href="{{ route('admin.resources')}}">Resources</a></li>
+                <li><a href="{{ route('subjects.index')}}">Subjects</a></li>
+                <li><a href="{{ route('curriculum.index')}}">Curriculum</a></li>
+                <li><a href="{{ route('resources.index')}}">Resources</a></li>
 
               </ul>
             </li>
