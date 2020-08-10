@@ -3,10 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Topic;
 
 class Resource extends Model
 {
     protected $fillable = [
-        'name', 'subject_id','class','curriculum_id','file'
+        'subject_id', 'week_id', 'topic_id', 'file',
     ];
+
+
+    public function topic()
+    {
+        return $this->belongsTo('App\Topic');
+    }
 }

@@ -6,6 +6,7 @@
     <div class="row tile_count">
      
     Teacher Dashboard
+    {{$user->class}}
     </div>
   </div>
   <!-- /page content -->

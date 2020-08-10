@@ -54,7 +54,11 @@
                         </div>
 
                         <div class="form-group row">
+<<<<<<< HEAD
                             <label for="class" class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
+=======
+                            <label for="class" class="col-md-4 col-form-label text-md-right">{{ __('class') }}</label>
+>>>>>>> f94839e2943a0e2ab158dc26f4c753a82456c53b
 
                             <div class="col-md-6">
                                 <select id="class" type="text" class="form-control{{ $errors->has('class') ? ' is-invalid' : '' }}" name="class" value="{{ old('class') }}" required>
